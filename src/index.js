@@ -20,15 +20,6 @@ class Board extends React.Component {
     };
   }
 
-  renderSquare(x, y) {
-    return (
-      <Square
-        value={this.props.squares[y * this.state.width + x]}
-        onClick={() => this.props.onClick(x, y)}
-      />
-    );
-  }
-
   render() {
     const cells = [];
 
@@ -164,14 +155,54 @@ ReactDOM.render(
 
 function calculateWinner(squares) {
   const lines = [
+    // First line
     [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
+    [1, 2, 3],
+    // Second line
+    [4, 5, 6],
+    [5, 6, 7],
+    // Third line
+    [8, 9, 10],
+    [9, 10, 11],
+    // Fourth line
+    [12, 13, 14],
+    [13, 14, 15],
+    // Fifth line
+    [16, 17, 18],
+    [17, 18, 19],
+
+    // First column
     [0, 4, 8],
-    [2, 4, 6],
+    [4, 8, 12],
+    [8, 12, 16],
+    // Second column
+    [1, 5, 9],
+    [5, 9, 13],
+    [9, 13, 17],
+    // Third column
+    [2, 6, 10],
+    [6, 10, 14],
+    [10, 14, 18],
+    // Fourth column
+    [3, 7, 11],
+    [7, 11, 15],
+    [11, 15, 19],
+
+    // Left to right diagonal
+    [0, 5, 10],
+    [1, 6, 11],
+    [4, 9, 14],
+    [5, 10, 15],
+    [8, 13, 18],
+    [9, 14, 19],
+
+    // Right to left diagonal
+    [2, 5, 8],
+    [3, 6, 9],
+    [7, 10, 13],
+    [6, 9, 12],
+    [11, 14, 17],
+    [10, 13, 16],
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
