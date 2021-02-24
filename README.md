@@ -15,4 +15,4 @@ Here are some next steps that are suggested by the tutorial:
 | V | Rewrite Board to use two loops to make the squares instead of hardcoding them |
 | X | Add a toggle button that lets you sort the moves in either ascending or descending order |
 | V | When someone wins, highlight the three squares that caused the win |
-| X | When no one wins, display a message about the result being a draw |
+| V | When no one wins, display a message about the result being a draw |
