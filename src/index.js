@@ -84,6 +84,7 @@ class Game extends React.Component {
       ],
       stepNumber: 0,
       xIsNext: true,
+      movesAscendingOrder: true,
     };
   };
 
@@ -122,6 +123,14 @@ class Game extends React.Component {
     );
   }
 
+  invertMovesOrder() {
+    this.setState(
+      {
+        movesAscendingOrder: !this.state.movesAscendingOrder,
+      }
+    )
+  }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -141,12 +150,12 @@ class Game extends React.Component {
       }
     }
 
-    const moves = history.map((step, move) => {
+    let moves = history.map((step, move) => {
       const desc = move ?
       "Go to move #" + move + " (" + step.x + ", " + step.y + ")" :
       "Go to game start";
 
-      if (move == this.state.stepNumber) {
+      if (move === this.state.stepNumber) {
         return (
           <li key = {move}>
             <button className="current_move" onClick = {() => this.jumpTo(move)}>{desc}</button>
@@ -161,6 +170,15 @@ class Game extends React.Component {
       }
     });
 
+    if (!this.state.movesAscendingOrder) {
+      moves = moves.reverse();
+    }
+
+    let order = "Sort in ascending order";
+    if (this.state.movesAscendingOrder) {
+      order = "Sort in descending order";
+    }
+
     return (
       <div className="game">
         <div className="game-board">
@@ -173,6 +191,9 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
+          <div className="game-info">
+            <button onClick = {() => this.invertMovesOrder()}>{order}</button>
+          </div>
           <ol>{moves}</ol>
         </div>
       </div>
