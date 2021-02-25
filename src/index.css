@@ -32,6 +32,10 @@ ol, ul {
   width: 34px;
 }
 
+.current_move {
+  font-weight: bold;
+}
+
 .winning_square {
   background: #6f6;
   border: 1px solid #999;

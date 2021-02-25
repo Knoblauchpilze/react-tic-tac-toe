@@ -11,7 +11,7 @@ Here are some next steps that are suggested by the tutorial:
 | Status | Feature |
 | --- | --- |
 | V | Display the location for each move in the format (col, row) in the move history list |
-| X | Bold the currently selected item in the move list |
+| V | Bold the currently selected item in the move list |
 | V | Rewrite Board to use two loops to make the squares instead of hardcoding them |
 | X | Add a toggle button that lets you sort the moves in either ascending or descending order |
 | V | When someone wins, highlight the three squares that caused the win |
